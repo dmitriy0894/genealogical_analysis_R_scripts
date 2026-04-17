@@ -6,9 +6,13 @@ An interactive R-based workflow for analyzing SNP profiles of grapevine varietie
 * Principal Component Analysis (PCA)
 * IBD & Kinship estimation (KING-robust)
 * UPGMA Clustering & Network visualization
+
 To run this scripts, you will need R installed along with the following packages:
+
 `install.packages("BiocManager")`
+
 `BiocManager::install("SNPRelate")`
+
 `install.packages("writexl")`
 ## 01_heterozygosity_calc 
 Converts VCF data into GDS format, performs LD pruning, and calculates individual observed (Ho) and expected (He) heterozygosity.
