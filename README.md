@@ -1,5 +1,11 @@
 # Genealogical Analysis of Grapevine Cultivars R scripts
-R pipeline for analysis of SNP data (heterozygosity, PCA, IBD, clustering) based on the SNPRelate package (Zheng et al., 2012).
+# R Pipeline for Grape Cultivar SNP Analysis (SNPRelate)
+An interactive R-based workflow for analyzing SNP profiles of grapevine varieties. Built on top of the `SNPRelate` package (Zheng et al., 2012), this pipeline covers:
+* VCF to GDS conversion & LD pruning
+* Individual Heterozygosity calculation (Ho & He)
+* Principal Component Analysis (PCA)
+* IBD & Kinship estimation (KING-robust)
+* UPGMA Clustering & Network visualization
 #### To run this scripts, you will need R installed along with the following packages:
 #### install.packages("BiocManager")
 #### BiocManager::install("SNPRelate")
