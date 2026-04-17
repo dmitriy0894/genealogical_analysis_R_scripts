@@ -1,5 +1,4 @@
 # Genealogical Analysis of Grapevine Cultivars R scripts
-# R Pipeline for Grape Cultivar SNP Analysis (SNPRelate)
 An interactive R-based workflow for analyzing SNP profiles of grapevine varieties. Built on top of the `SNPRelate` package (Zheng et al., 2012), this pipeline covers:
 * VCF to GDS conversion & LD pruning
 * Individual Heterozygosity calculation (Ho & He)
