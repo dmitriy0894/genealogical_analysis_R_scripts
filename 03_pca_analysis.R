@@ -2,14 +2,14 @@ library(SNPRelate)
 library(ggplot2)
 library(ggrepel)
 
-# --- Workspace Setup ---
+# --- 1. Workspace Setup & File Selection ---
 cat("A window will open: please select the input clean GDS file...\n")
 gds_clean.fn <- file.choose() 
 work_dir <- dirname(gds_clean.fn)
 setwd(work_dir)
 genofile <- snpgdsOpen(gds_clean.fn)
 
-# --- Run PCA ---
+# --- 2. Run PCA ---
 cat("\nRunning PCA...\n")
 pca <- snpgdsPCA(genofile, autosome.only = FALSE, num.thread = 2, verbose = TRUE)
 
@@ -24,10 +24,10 @@ pca_tab <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# --- Visualization & Export ---
-cat("\nGenerating plot and saving as TIFF (600 DPI)...\n")
+# --- 3. Visualization & Export ---
+cat("\nGenerating plot and saving as PNG (600 DPI)...\n")
 
-output_tiff <- "PCA_Plot.tiff"
+output_png <- "PCA_Plot.png"
 
 # Create the plot using ggplot2
 pca_plot <- ggplot(pca_tab, aes(x = PC1, y = PC2, label = Sample_ID)) +
@@ -51,19 +51,19 @@ pca_plot <- ggplot(pca_tab, aes(x = PC1, y = PC2, label = Sample_ID)) +
   ) +
   theme_bw()
 
-# Export plot to high-resolution TIFF
+# Export plot to high-resolution PNG
 ggsave(
-  filename = output_tiff, 
+  filename = output_png, 
   plot = pca_plot, 
-  device = "tiff", 
+  device = "png", 
   width = 8, 
   height = 6, 
   units = "in", 
-  dpi = 600, 
-  compression = "lzw"
+  dpi = 600
 )
 
+# --- 4. Cleanup ---
 snpgdsClose(genofile)
 
 cat("\nSUCCESS! Files saved to:", work_dir, "\n")
-cat("- Plot:", output_tiff, "\n")
+cat("- Plot:", output_png, "\n")
